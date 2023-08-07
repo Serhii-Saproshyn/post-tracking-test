@@ -1,0 +1,28 @@
+header {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding-left: 40px;
+  background-color: rgb(255, 63, 63);
+}
+
+.navList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 15px;
+}
+
+footer {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(255, 63, 63);
+  margin-bottom: 0;
+}
+
+.navlink:hover {
+  color: #5736a3;
+}

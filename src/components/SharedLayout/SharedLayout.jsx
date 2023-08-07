@@ -2,7 +2,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import { Suspense } from "react";
 import Loader from "components/Loader/Loader.jsx";
 import gitHub from "images/gitHub.svg";
-import css from "components/SharedLayout/SharedLayout.module.css";
+import css from "./SharedLayout.module.scss";
 
 const SharedLayout = () => {
   return (
@@ -11,7 +11,7 @@ const SharedLayout = () => {
         <ul className={css.navList}>
           <li>
             <NavLink className={css.navlink} to="/">
-              Home
+              Post tracking
             </NavLink>
           </li>
           <li>

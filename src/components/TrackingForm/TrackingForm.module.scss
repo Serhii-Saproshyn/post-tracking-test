@@ -1,0 +1,52 @@
+@import "../../styles/variables.scss";
+
+.trackingForm {
+  display: flex;
+  flex-direction: column;
+  padding: 60px;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  input {
+    width: 287px;
+    height: 50px;
+    left: 40px;
+    top: 107px;
+    color: $input-color;
+    background: $input-background;
+    border: 1px solid $input-color;
+    padding-left: 18px;
+    border-radius: 8px;
+  }
+}
+
+.trackingButton {
+  width: 287px;
+  height: 50px;
+  margin-top: 24px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: -0.02em;
+  text-align: center;
+  background: $track-button;
+  border-radius: 8px;
+  color: $input-color;
+  cursor: pointer;
+  border: none;
+  transition: 500ms ease-in-out;
+
+  &:hover {
+    background: $track-button-hover;
+    scale: 1.03;
+  }
+}
+
+.errorMessage {
+  font-size: 14px;
+  color: $error;
+}

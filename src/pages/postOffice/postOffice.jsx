@@ -1,7 +1,6 @@
-// import TweetsList from "components/TweetsList/TweetsList";
+import css from "./postOffice.module.scss";
 const PostOffice = () => {
-  //   return <TweetsList />;
-  return <p>qweqweqweqwe</p>;
+  return <div className={css.container}></div>;
 };
 
 export default PostOffice;

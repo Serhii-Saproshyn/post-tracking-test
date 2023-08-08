@@ -21,8 +21,9 @@ const SharedLayout = () => {
           </li>
           <li>
             <NavLink
-              className={css.navlink}
-              activeClassName={css.active}
+              className={({ isActive }) =>
+                `${isActive ? css.navlinkActive : css.navlink}`
+              }
               to="/post-office"
             >
               Post office

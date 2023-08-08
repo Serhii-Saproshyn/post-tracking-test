@@ -10,12 +10,21 @@ const SharedLayout = () => {
       <header className={css.header}>
         <ul className={css.navList}>
           <li>
-            <NavLink className={css.navlink} to="/">
+            <NavLink
+              className={({ isActive }) =>
+                `${isActive ? css.navlinkActive : css.navlink}`
+              }
+              to="/"
+            >
               Post tracking
             </NavLink>
           </li>
           <li>
-            <NavLink className={css.navlink} to="/post-office">
+            <NavLink
+              className={css.navlink}
+              activeClassName={css.active}
+              to="/post-office"
+            >
               Post office
             </NavLink>
           </li>

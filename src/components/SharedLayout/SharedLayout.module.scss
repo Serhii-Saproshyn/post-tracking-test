@@ -16,14 +16,25 @@ header {
   gap: 15px;
 }
 
+.navlink {
+  color: $nav-link;
+  letter-spacing: 0.001em;
+  transition: 500ms ease-in-out;
+}
+
+.navlink:hover,
+.navlink:focus {
+  color: $nav-link-hover;
+}
+
+.navlinkActive {
+  color: $nav-link-hover;
+}
+
 footer {
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: $header-footer;
-}
-
-.navlink:hover {
-  color: $nav-link;
 }

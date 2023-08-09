@@ -3,6 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import OfficeData from "../OfficeData/OfficeData";
 
 import css from "./OfficeForm.module.scss";
 
@@ -83,33 +84,14 @@ const OfficeForm = () => {
           </button>
         </Form>
       </Formik>
-      {cityName && offices.length > 0 && (
-        <div className={css.officeData}>
-          <h3>Offices:</h3>
-          <ul className={css.officeList}>
-            {offices.map((office, index) => (
-              <li key={index}>
-                <p>{office.Description}</p>
-              </li>
-            ))}
-          </ul>
-          <div className={css.officePagination}>
-            <button
-              className={css.officePaginationButton}
-              onClick={handlePreviousPage}
-              disabled={currentPage === 1}
-            >
-              Previous page
-            </button>
-            <button
-              className={css.officePaginationButton}
-              onClick={handleNextPage}
-              disabled={offices.length === 0 || offices.length < itemsPerPage}
-            >
-              Next page
-            </button>
-          </div>
-        </div>
+      {cityName && (
+        <OfficeData
+          offices={offices}
+          currentPage={currentPage}
+          itemsPerPage={itemsPerPage}
+          handlePreviousPage={handlePreviousPage}
+          handleNextPage={handleNextPage}
+        />
       )}
       <ToastContainer autoClose={3000} theme="colored" />
     </div>

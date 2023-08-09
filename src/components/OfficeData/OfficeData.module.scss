@@ -1,0 +1,32 @@
+@import "../../styles/variables.scss";
+
+.officeData {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.officeList {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.officePagination {
+  display: flex;
+  gap: 20px;
+}
+
+.officePaginationButton {
+  width: 100px;
+  height: 35px;
+  border: none;
+  border-radius: 8px;
+  transition: 500ms ease-in-out;
+  &:hover {
+    background-color: $pagination-button-hover;
+  }
+}

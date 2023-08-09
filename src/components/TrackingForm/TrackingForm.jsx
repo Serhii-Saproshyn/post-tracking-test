@@ -3,8 +3,10 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 import TrackingSchema from "./TrackingSchema";
+import TrackingStatus from "../TrackingStatus/TrackingStatus";
+import TrackingHistory from "../TrackingHistory/TrackingHistory";
+
 import css from "./TrackingForm.module.scss";
 
 const { REACT_APP_BASE_URL, REACT_APP_API_KEY } = process.env;
@@ -51,14 +53,6 @@ const TrackingForm = () => {
     }
   };
 
-  const handleTrackingNumberClick = (number) => {
-    onSubmit({ trackingNumber: number });
-  };
-
-  const handleClearTrackingNumbers = () => {
-    setTrackingNumbers([]);
-  };
-
   return (
     <>
       <Formik
@@ -86,55 +80,13 @@ const TrackingForm = () => {
           </div>
         </Form>
       </Formik>
-      <div className={css.statusContainer}>
-        <ul>
-          {statuses.map(
-            (
-              {
-                Status,
-                ActualDeliveryDate,
-                CitySender,
-                WarehouseRecipient,
-                CityRecipient,
-                Number,
-              },
-              index
-            ) => (
-              <li className={css.statusList} key={index}>
-                <p>Status: {Status}</p>
-                <p>Actual Delivery Date: {ActualDeliveryDate}</p>
-                <p>City Sender: {CitySender}</p>
-                <p>City Recipient: {CityRecipient}</p>
-                <p>Warehouse Recipient: {WarehouseRecipient}</p>
-                <p>Number: {Number}</p>
-              </li>
-            )
-          )}
-        </ul>
-      </div>
-      {trackingNumbers.length > 0 && (
-        <div className={css.trackingNumbersContainer}>
-          <h3>Your last 5 requests:</h3>
-          <ul className={css.trackingNumbersList}>
-            {trackingNumbers.map((number, index) => (
-              <li
-                className={css.trackingNumbersItem}
-                key={index}
-                onClick={() => handleTrackingNumberClick(number)}
-              >
-                {number}
-              </li>
-            ))}
-          </ul>
-          <button
-            className={css.trackingClearButton}
-            onClick={handleClearTrackingNumbers}
-          >
-            Clear All
-          </button>
-          <ToastContainer autoClose={3000} theme="colored" />
-        </div>
-      )}
+      <TrackingStatus statuses={statuses} />
+      <TrackingHistory
+        trackingNumbers={trackingNumbers}
+        handleTrackingNumberClick={onSubmit}
+        handleClearTrackingNumbers={() => setTrackingNumbers([])}
+      />
+      <ToastContainer autoClose={3000} theme="colored" />
     </>
   );
 };

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import css from "./OfficeForm.module.scss";
 
@@ -8,26 +10,28 @@ const OfficeForm = () => {
   const [offices, setOffices] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [cityName, setCityName] = useState("");
-  const itemsPerPage = 20;
+  const itemsPerPage = 10;
 
   const fetchOffices = async (city, page) => {
     try {
-      const response = await axios.post(
-        "https://api.novaposhta.ua/v2.0/json/",
-        {
-          apiKey: "f45cbadcbc8973c2c2b63e2376046972",
-          modelName: "Address",
-          calledMethod: "getWarehouses",
-          methodProperties: {
-            CityName: city,
-            Page: page.toString(),
-            Limit: itemsPerPage.toString(),
-            Language: "UA",
-            TypeOfWarehouseRef: "",
-            WarehouseId: "",
-          },
-        }
-      );
+      const response = await axios.post(process.env.REACT_APP_API_BASE_URL, {
+        apiKey: process.env.REACT_APP_API_KEY,
+        modelName: "Address",
+        calledMethod: "getWarehouses",
+        methodProperties: {
+          CityName: city,
+          Page: page.toString(),
+          Limit: itemsPerPage.toString(),
+          Language: "UA",
+          TypeOfWarehouseRef: "",
+          WarehouseId: "",
+        },
+      });
+
+      if (response.data.data.length === 0) {
+        toast.error("Please enter a valid request");
+      }
+
       setOffices(response.data.data);
     } catch (error) {
       console.error(error.message);
@@ -56,7 +60,7 @@ const OfficeForm = () => {
   };
 
   return (
-    <div className={css.officeFormContainer}>
+    <div className={css.officeСontainer}>
       <Formik initialValues={{ cityName: "" }} onSubmit={onSubmit}>
         <Form className={css.officeForm}>
           <div className={css.inputContainer}>
@@ -71,31 +75,41 @@ const OfficeForm = () => {
               component="div"
             />
           </div>
-          <div>
-            <button className={css.officeButton} type="submit">
-              Find
-            </button>
-          </div>
+
+          <button className={css.officeButton} type="submit">
+            Find
+          </button>
         </Form>
       </Formik>
       {cityName && offices.length > 0 && (
-        <div className={css.officesContainer}>
+        <div className={css.officeData}>
           <h3>Offices:</h3>
-          <ul>
+          <ul className={css.officeList}>
             {offices.map((office, index) => (
               <li key={index}>
                 <p>{office.Description}</p>
               </li>
             ))}
           </ul>
-          <div className={css.pagination}>
-            <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+          <div className={css.officePagination}>
+            <button
+              className={css.officePaginationButton}
+              onClick={handlePreviousPage}
+              disabled={currentPage === 1}
+            >
               Previous page
             </button>
-            <button onClick={handleNextPage}>Next page</button>
+            <button
+              className={css.officePaginationButton}
+              onClick={handleNextPage}
+              disabled={offices.length === 0 || offices.length < itemsPerPage}
+            >
+              Next page
+            </button>
           </div>
         </div>
       )}
+      <ToastContainer autoClose={3000} theme="colored" />
     </div>
   );
 };

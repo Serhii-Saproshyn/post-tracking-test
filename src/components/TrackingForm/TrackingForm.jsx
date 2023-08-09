@@ -34,7 +34,7 @@ const TrackingForm = () => {
         response.data.data.length > 0 &&
         response.data.data[0].Status === "Номер не найден"
       ) {
-        toast.error("Please enter a valid request");
+        toast.error("This package was not found");
       } else {
         setStatuses(response.data.data);
 

@@ -1,0 +1,13 @@
+@import "../../styles/variables.scss";
+
+.statusContainer {
+  padding: 60px;
+}
+
+.statusList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: 700;
+}

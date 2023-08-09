@@ -71,7 +71,7 @@ const TrackingForm = () => {
             <Field
               type="text"
               name="trackingNumber"
-              placeholder="Enter a tracking number of 14 digits"
+              placeholder="Enter a 14 digit number"
             />
             <ErrorMessage
               className={css.errorMessage}

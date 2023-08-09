@@ -16,8 +16,8 @@ const OfficeForm = () => {
 
   const fetchOffices = async (city, page) => {
     try {
-      const response = await axios.post(process.env.REACT_APP_API_BASE_URL, {
-        apiKey: process.env.REACT_APP_API_KEY,
+      const response = await axios.post(REACT_APP_BASE_URL, {
+        apiKey: REACT_APP_API_KEY,
         modelName: "Address",
         calledMethod: "getWarehouses",
         methodProperties: {

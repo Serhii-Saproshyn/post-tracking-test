@@ -50,3 +50,33 @@
   font-size: 14px;
   color: $error;
 }
+
+.statusContainer {
+  padding: 60px;
+}
+
+.statusList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.trackingNumbersList {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  top: 340px;
+  right: 80px;
+  font-size: 20px;
+  font-weight: 700;
+  color: black;
+}
+
+.trackingNumbersItem {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

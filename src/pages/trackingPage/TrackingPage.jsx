@@ -1,7 +1,7 @@
 import TrackingForm from "components/TrackingForm/TrackingForm";
-import css from "./home.module.scss";
+import css from "./TrackingPage.module.scss";
 
-const Home = () => {
+const TrackingPage = () => {
   return (
     <div className={css.container}>
       <TrackingForm></TrackingForm>
@@ -9,4 +9,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default TrackingPage;

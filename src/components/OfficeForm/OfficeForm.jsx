@@ -6,6 +6,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 import css from "./OfficeForm.module.scss";
 
+const { REACT_APP_BASE_URL, REACT_APP_API_KEY } = process.env;
+
 const OfficeForm = () => {
   const [offices, setOffices] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
